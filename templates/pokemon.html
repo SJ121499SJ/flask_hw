@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<form action="/pokemon" method="POST">
+    <div class="form-group">
+      <label for="pokemon_name">Pokemon Name</label>
+      <input type="text" class="form-control" id="pokemon_name" name="pokemon_name">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% if pokemon_info %}
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Ability</th>
+        <th scope="col">Base Experience</th>
+        <th scope="col">URL for image</th>
+        <th scope="col">Attack</th>
+        <th scope="col">HP</th>
+        <th scope="col">Defense</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{pokemon_info.Name}}</th>
+        <td>{{pokemon_info.Ability}}</td>
+        <td>{{pokemon_info.Base_experience}}</td>
+        <td>{{pokemon_info.Url_for_front_shiny}}</td>
+        <td>{{pokemon_info.Attack_base_state}}</td>
+        <td>{{pokemon_info.hp_base_state}}</td>
+        <td>{{pokemon_info.Defense_base_state}}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% endif %}
+{% endblock %}
