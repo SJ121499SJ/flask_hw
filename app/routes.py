@@ -1,3 +1,8 @@
+from flask import Flask, render_template, request
+import requests
+from app.forms import PokemonForm
+from app import app
+
 #Route Section
 @app.route('/')
 def greetings():
@@ -7,10 +12,6 @@ def greetings():
 def home():
     return render_template('home.html')
 
-from flask import Flask, render_template, request
-import requests
-from forms import PokemonForm
-from app import app
 
 @app.route('/base')
 def base():
