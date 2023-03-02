@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import requests
-from app.forms import PokemonForm
+from app.forms import PokemonForm, RegistrationForm, LoginForm
 from app import app
 
 #Route Section
@@ -43,3 +43,30 @@ def pokemon():
             return render_template('pokemon.html', error=error, form=form)
         
     return render_template('pokemon.html', form=form)
+
+
+
+@app.route('/registration', methods=['GET', 'POST'])
+def registration():
+    form = RegistrationForm() 
+    if request.method == 'POST' and form.validate_on_submit():
+        full_name = form.full_name.data
+        email = form.email.data
+        password = form.password.data
+        app.config.get('REGISTERED_USERS')[email] = {'Full Name':full_name, 'password':password}
+        print(app.config.get('REGISTERED_USERS'))
+    return render_template('registration.html', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        email = form.email.data.lower()
+        password = form.password.data
+        if email in app.config.get('REGISTERED_USERS') and password == app.config.get('REGISTERED_USERS').get(email).get('password'):
+            return f"Login Successful! Welcome {app.config.get('REGISTERED_USERS').get(email).get('Full Name').upper()}"
+        else:
+            error = 'Incorrect Email/Password'
+            return render_template('login.html', error=error, form=form)
+    return render_template('login.html', form=form)
+    return render_template('login.html', form=form)
