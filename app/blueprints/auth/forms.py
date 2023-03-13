@@ -4,8 +4,10 @@ from wtforms.validators import DataRequired, EqualTo
 
 #Form Section
 class PokemonForm(FlaskForm):
-    pokemon_name = StringField('Pokemon Name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    pokemon_name = StringField(validators=[DataRequired()])
+    submit = SubmitField('Search')
+    catch = SubmitField('Catch')
+
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
@@ -27,3 +29,15 @@ class EditProfileForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Update')
+
+class ConfirmCatchForm(FlaskForm):
+    pokemon_name = StringField('Pokemon Name', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class TeamForm(FlaskForm):
+    pokemon_name = StringField('Pokemon Name', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class DeleteFromTeamForm(FlaskForm):
+    pokemon_name = StringField('Pokemon Name', validators=[DataRequired()])
+    submit = SubmitField('Submit')

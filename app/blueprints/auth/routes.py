@@ -9,7 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 #Route Section
 @auth.route('/register', methods=['GET','POST'])
 def register():
-     form = form = RegistrationForm()
+     form =  RegistrationForm()
      if request.method == 'POST' and form.validate_on_submit():
          new_user_data = {
             'first_name': form.first_name.data.title(),

@@ -2,15 +2,17 @@
 {% block title %} 
 Home
 {% endblock %}
-
-{% block css %} 
-
-<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
-
-{% endblock %}
 {% block content %}
-<body style="background-image: url(https://free4kwallpapers.com/uploads/originals/2016/09/05/pokemon-go-hd-wallpaper.jpg);">
+<body style="background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/33f87af1-69a0-4629-856b-bcd83431548e/d4o49yb-f6ce0e46-18c7-4b95-8604-dfc301eb506b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8zM2Y4N2FmMS02OWEwLTQ2MjktODU2Yi1iY2Q4MzQzMTU0OGUvZDRvNDl5Yi1mNmNlMGU0Ni0xOGM3LTRiOTUtODYwNC1kZmMzMDFlYjUwNmIucG5nIn1dXX0.4Tx9zDbmL86bTNaK2ibwvBGxM81vWP8g78EH6SroHsI);" >
+<h1 style="text-align: center;">Make your team of Pokemons and battle other users!</h1>
 <br>
-<h1 class="click" style="color:white">Click 'Pokemon Info' to learn more about a specific pokemon</h1>
+<div>
+    {% for user in users %}
+    {% if user!= current_user %}
+    <ul><h1>{{ user.first_name }} {{ user.last_name }}</ul></h1>
+    <a href="{{url_for('main.battle')}}" class="btn btn-primary mb-2 mx-auto">Attack & Battle</a>
+    {% endif %}
+    {% endfor %}
+</div>
 </body>
 {% endblock %}

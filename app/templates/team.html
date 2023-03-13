@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block title %} 
+My Team
+{% endblock %}
+
+{% block content %}
+<body style="background-image: url(https://wallpaper.dog/large/10842671.jpg);"> 
+  <h2 style="text-align: center; color: aliceblue;">My Current Team</h2>
+  {% if pokemon_caught %}
+  {% for pokemon in pokemon_caught %}  
+    <ul style="color: aliceblue;" ><h1>{{pokemon.pokemon_name}}</h1></ul>
+    <a href="{{url_for('main.delete_from_team')}}" class="btn btn-primary">Remove</a>
+  {%  endfor %}
+  {% endif %}
+</body>
+{% endblock %}

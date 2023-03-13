@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+
+{% block title %} 
+Confirm Catch
+{% endblock %}
+
+{% block content %}
+<body style="background-image: url(https://wallpaper.dog/large/10842671.jpg);"> 
+<h1>Enter the name of the pokemon to confirm the catch</h1>
+<form action="/confirm_catch" method="POST">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+        {{form.pokemon_name.label()}}
+        {{form.pokemon_name(class="form-control")}}
+    </div>
+    <br>
+    {{form.submit(class='btn btn-primary')}}
+  </form>
+  <br>
+  <div class="error"> {{error}} </div>
+</body>
+{% endblock %}

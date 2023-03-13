@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} 
+Delete from team
+{% endblock %}
+{% block content %}
+<br>
+<body style="background-image: url(https://e0.pxfuel.com/wallpapers/22/456/desktop-wallpaper-pikachu-crying-pikachu-thumbnail.jpg); background-size: cover; ">
+    <h1 style="color: aliceblue;">Enter the name of the pokemon to confirm the removal</h1>
+    <form action="/delete_from_team" method="POST">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            {{form.pokemon_name.label()}}
+            {{form.pokemon_name(class="form-control")}}
+        </div>
+        <br>
+        {{form.submit(class='btn btn-primary')}}
+      </form>
+</body>
+{% endblock %}

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} 
-Pokemon Info 
+Pokemon Info
 {% endblock %}
 {% block content %} 
-<form action="/pokemon" method="POST">
+<body style="background-image: url(https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?cs=srgb&dl=pexels-pixabay-257360.jpg&fm=jpg); background-size:cover;">
+<h2 style="color: aliceblue;" >Name of Pokemon</h2>
+  <form action="/pokemon" method="POST">
     {{form.hidden_tag()}}
     <div class="form-group">
       {{form.pokemon_name.label()}}
@@ -40,5 +42,13 @@ Pokemon Info
       </tr>
     </tbody>
   </table>
+</body>
+<div class="card" style="width: 18rem; ">
+  <img class="card-img-top" src="{{pokemon_info.Url_for_front_shiny}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{pokemon_info.Name}}</h5>
+    <a href="{{url_for('main.confirm_catch')}}" class="btn btn-primary">Catch</a>
+  </div>
+</div>
   {% endif %}
 {% endblock %}

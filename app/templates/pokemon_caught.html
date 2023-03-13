@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+{% block title %} 
+Pokemon Caught
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;" >Pokemons Caught</h1>
+    {% if pokemon_caught %}
+    {% for pokemon in pokemon_caught %}
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5>{{pokemon.pokemon_name}}</h5>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="card-body">
+      <a href="{{url_for('main.team')}}" class="btn btn-primary">Add 5 Pokemons To The Team</a>
+    </div>
+    {% endif %}
+{% endblock %}

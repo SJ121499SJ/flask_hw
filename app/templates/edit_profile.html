@@ -6,6 +6,7 @@ Edit Profile
 
 {% block content %}
 <h1>Edit Profile</h1>
+<body style="background-image: url(https://w.wallha.com/ws/14/EuiyIW8k.png); background-size: cover;">
 <form action="{{url_for('auth.edit_profile')}}" method="POST">
     {{form.hidden_tag()}}
     <div class="form-group">
@@ -33,4 +34,5 @@ Edit Profile
   </form>
   <br>
   <div class="error"> {{error}} </div>
+</body>
 {% endblock %}

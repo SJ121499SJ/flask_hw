@@ -9,6 +9,7 @@ Registration
 
 {% endblock %}
 {% block content %}
+<body style="background-image: url(https://wallup.net/wp-content/uploads/2017/11/17/301412-Pokemon-748x421.jpg); background-size: cover;">
 <h1>Login Page</h1>
 <form action="/login" method="POST">
     {{form.hidden_tag()}}
@@ -25,4 +26,5 @@ Registration
   </form>
   <br>
   <div class="error"> {{error}} </div>
+</body>
 {% endblock %}

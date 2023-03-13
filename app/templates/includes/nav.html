@@ -3,58 +3,49 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/nav.css')}}">
 
 {% endblock %}
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{url_for('main.greetings')}}">Welcome</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">Hello, {{current_user.first_name}}</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for('main.home')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('main.pokemon')}}">Pokemon Info</a>
+            <a class="nav-link" href="{{url_for('main.pokemon')}}">Find Pokemons</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">   
           {% else %}
           <li class="nav-item">
-                  <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-                      </li>
+          </li>
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{url_for('auth.register')}}">Registration</a>
           </li>
           {% endif %}
-        </ul>
+      </ul>
     </div>
     {% if current_user.is_authenticated %}
     <div class="right_side">
-    
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page">Hello, {{current_user.first_name}}</a>
-      </li>
-          </button>
+        <a class="nav-link active" aria-current="page" href="{{url_for('main.team')}}">My Team</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{{url_for('auth.edit_profile')}}">Edit Profile</a>
       </li>
-          </button>
-      </li>
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{{url_for('auth.logout')}}">Logout</a>
       </li>
-          </button>
-      </li>
-      </ul>
     </div>
     {% endif %}
-  </div>
-
   </nav>
